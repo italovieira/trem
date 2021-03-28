@@ -29,6 +29,12 @@ private slots:
 
     void on_sliderT2_valueChanged(int value);
 
+    void on_sliderT3_valueChanged(int value);
+
+    void on_sliderT4_valueChanged(int value);
+
+    void on_sliderT5_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 

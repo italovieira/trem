@@ -32,22 +32,23 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
-void MainWindow::updateInterface(int id, int x, int y){
-    switch(id){
+void MainWindow::updateInterface(int id, int x, int y)
+{
+    switch (id) {
     case 1: //Atualiza a posição do objeto da tela (quadrado) que representa o trem1
-        ui->label_trem1->setGeometry(x, y, 21, 17);
+        ui->label_trem1->setGeometry(x, y, 20, 20);
         break;
     case 2: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
-        ui->label_trem2->setGeometry(x, y, 21, 17);
+        ui->label_trem2->setGeometry(x, y, 20, 20);
         break;
     case 3: //Atualiza a posição do objeto da tela (quadrado) que representa o trem3
-        ui->label_trem3->setGeometry(x,y,21,17);
+        ui->label_trem3->setGeometry(x, y, 20, 20);
         break;
     case 4: //Atualiza a posição do objeto da tela (quadrado) que representa o trem4
-        ui->label_trem4->setGeometry(x, y, 21, 17);
+        ui->label_trem4->setGeometry(x, y, 20, 20);
         break;
     case 5: //Atualiza a posição do objeto da tela (quadrado) que representa o trem5
-        ui->label_trem4->setGeometry(x, y, 21, 17);
+        ui->label_trem5->setGeometry(x, y, 20, 20);
         break;
     default:
         break;
@@ -91,4 +92,19 @@ void MainWindow::on_sliderT1_valueChanged(int value)
 void MainWindow::on_sliderT2_valueChanged(int value)
 {
     trem2->setVelocidade(value);
+}
+
+void MainWindow::on_sliderT3_valueChanged(int value)
+{
+    trem3->setVelocidade(value);
+}
+
+void MainWindow::on_sliderT4_valueChanged(int value)
+{
+    trem4->setVelocidade(value);
+}
+
+void MainWindow::on_sliderT5_valueChanged(int value)
+{
+    trem5->setVelocidade(value);
 }

@@ -25,7 +25,7 @@ void Trem::run()
         int y = Y_START;
 
         int column = (ID - 1) % 3;
-        int row = ID / 3;
+        int row = ID / 4;
 
         if (row == 1) {
             x = 180;
