@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Cria o trem com seu (ID, posição X, posição Y)
     trem1 = new Trem(1,60,30);
-    trem2 = new Trem(2,330,30);
+    trem2 = new Trem(2,320,30);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.

@@ -17,23 +17,23 @@ void Trem::run(){
     while(true){
         switch(ID){
         case 1:     //Trem 1
-            if (y == 30 && x <330)
-                x+=10;
-            else if (x == 330 && y < 150)
-                y+=10;
-            else if (x > 60 && y == 150)
-                x-=10;
+            if (y == 30 && x < 320)
+                x += 10;
+            else if (x == 320 && y < 130)
+                y += 10;
+            else if (x > 60 && y == 130)
+                x -= 10;
             else
-                y-=10;
+                y -= 10;
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         case 2: //Trem 2
-            if (y == 30 && x <600)
-                x+=10;
-            else if (x == 600 && y < 150)
-                y+=10;
-            else if (x > 330 && y == 150)
-                x-=10;
+            if (y == 30 && x < 580)
+                x += 10;
+            else if (x == 580 && y < 130)
+                y += 10;
+            else if (x > 320 && y == 130)
+                x -= 10;
             else
                 y-=10;
             emit updateGUI(ID, x,y);    //Emite um sinal
