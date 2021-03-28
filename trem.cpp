@@ -6,10 +6,8 @@
 #define STEP 10
 #define X_START 60
 #define Y_START 30
-#define X_END 320
-#define Y_END 130
 #define WIDTH 260
-#define HEIGHT 130
+#define HEIGHT 100
 
 
 //Construtor
@@ -24,24 +22,29 @@ Trem::Trem(int ID, int x, int y){
 void Trem::run()
 {
     for (;;) {
-        int xStart = 60 + WIDTH * (ID - 1);
-        int yStart = 30;
-        int xEnd = xStart + WIDTH;
-        int yEnd = 130;
+        int x = X_START;
+        int y = Y_START;
 
-        if (ID > 3) {
-            xStart = 100;
-            yStart = 400;
+        int column = (ID - 1) % 3;
+        int row = ID / 3;
+
+        if (row == 1) {
+            x = 180;
         }
 
-        if (y == yStart && x < xEnd)
-            x += STEP;
-        else if (x == xEnd && y < yEnd)
-            y += STEP;
-        else if (x > xStart && y == yEnd)
-            x -= STEP;
+        int xStart = x + WIDTH * column;
+        int yStart = y + HEIGHT * row;
+        int xEnd = xStart + WIDTH;
+        int yEnd = yStart + HEIGHT;
+
+        if (this->y == yStart && this->x < xEnd)
+            this->x += STEP;
+        else if (this->x == xEnd && this->y < yEnd)
+            this->y += STEP;
+        else if (this->x > xStart && this->y == yEnd)
+            this->x -= STEP;
         else
-            y -= STEP;
+            this->y -= STEP;
 
         emit updateGUI(ID, x, y);    //Emite um sinal
         msleep(velocidade);

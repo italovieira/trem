@@ -8,8 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1,60,30);
-    trem2 = new Trem(2,320,30);
+    trem1 = new Trem(1, 60, 30);
+    trem2 = new Trem(2, 320, 30);
+    trem3 = new Trem(3, 580, 30);
+    trem4 = new Trem(4, 180, 130);
+    trem5 = new Trem(5, 440, 130);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -18,8 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
      * Trem1 e Trem2 são os objetos que podem chamar o sinal. Se um outro objeto chamar o
      * sinal UPDATEGUI, não haverá execução da função UPDATEINTERFACE
      */
-    connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
-    connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem1, SIGNAL(updateGUI(int, int, int)), SLOT(updateInterface(int, int, int)));
+    connect(trem2, SIGNAL(updateGUI(int, int, int)), SLOT(updateInterface(int, int, int)));
+    connect(trem3, SIGNAL(updateGUI(int, int, int)), SLOT(updateInterface(int, int, int)));
+    connect(trem4, SIGNAL(updateGUI(int, int, int)), SLOT(updateInterface(int, int, int)));
+    connect(trem5, SIGNAL(updateGUI(int, int, int)), SLOT(updateInterface(int, int, int)));
 
 
 
