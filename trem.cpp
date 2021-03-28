@@ -1,12 +1,15 @@
 #include "trem.h"
 #include <QtCore>
 
+#define MINIMUM 0
+#define MAXIMUM 100
+
 //Construtor
 Trem::Trem(int ID, int x, int y){
     this->ID = ID;
     this->x = x;
     this->y = y;
-    velocidade = 100;
+    this->velocidade = MAXIMUM;
 }
 
 //Função a ser executada após executar trem->START
@@ -39,6 +42,13 @@ void Trem::run(){
             break;
         }
         msleep(velocidade);
+    }
+}
+
+void Trem::setVelocidade(int value)
+{
+    if (value >= MINIMUM && value <= MAXIMUM) {
+        this->velocidade = MAXIMUM - value;
     }
 }
 

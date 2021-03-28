@@ -25,6 +25,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_sliderT1_valueChanged(int value);
+
+    void on_sliderT2_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 

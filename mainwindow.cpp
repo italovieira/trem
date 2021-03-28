@@ -61,3 +61,13 @@ void MainWindow::on_pushButton_2_clicked()
     trem1->terminate();
     trem2->terminate();
 }
+
+void MainWindow::on_sliderT1_valueChanged(int value)
+{
+    trem1->setVelocidade(value);
+}
+
+void MainWindow::on_sliderT2_valueChanged(int value)
+{
+    trem2->setVelocidade(value);
+}
