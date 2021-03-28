@@ -9,7 +9,6 @@
 #define WIDTH 260
 #define HEIGHT 100
 
-
 //Construtor
 Trem::Trem(int ID, int x, int y){
     this->ID = ID;
@@ -46,7 +45,7 @@ void Trem::run()
         else
             this->y -= STEP;
 
-        emit updateGUI(ID, x, y);    //Emite um sinal
+        emit updateGUI(ID, this->x, this->y);    //Emite um sinal
         msleep(velocidade);
     }
 }
