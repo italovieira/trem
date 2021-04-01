@@ -14,6 +14,41 @@ MainWindow::MainWindow(QWidget *parent) :
     trem4 = new Trem(4, 180, 130);
     trem5 = new Trem(5, 440, 130);
 
+    trem1->trens[0] = trem1;
+    trem1->trens[1] = trem2;
+    trem1->trens[2] = trem3;
+    trem1->trens[3] = trem4;
+    trem1->trens[4] = trem5;
+
+
+    trem2->trens[0] = trem1;
+    trem2->trens[1] = trem2;
+    trem2->trens[2] = trem3;
+    trem2->trens[3] = trem4;
+    trem2->trens[4] = trem5;
+
+
+    trem3->trens[0] = trem1;
+    trem3->trens[1] = trem2;
+    trem3->trens[2] = trem3;
+    trem3->trens[3] = trem4;
+    trem3->trens[4] = trem5;
+
+
+    trem4->trens[0] = trem1;
+    trem4->trens[1] = trem2;
+    trem4->trens[2] = trem3;
+    trem4->trens[3] = trem4;
+    trem4->trens[4] = trem5;
+
+
+    trem5->trens[0] = trem1;
+    trem5->trens[1] = trem2;
+    trem5->trens[2] = trem3;
+    trem5->trens[3] = trem4;
+    trem5->trens[4] = trem5;
+
+
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
      * Ou seja, sempre que o sinal UPDATEGUI foi chamado, será executada a função UPDATEINTERFACE.
@@ -67,9 +102,9 @@ void MainWindow::on_pushButton_clicked()
 {
     trem1->start();
     trem2->start();
-    trem3->start();
+    //trem3->start();
     trem4->start();
-    trem5->start();
+    //trem5->start();
 }
 
 /*
@@ -79,9 +114,9 @@ void MainWindow::on_pushButton_2_clicked()
 {
     trem1->terminate();
     trem2->terminate();
-    trem3->terminate();
+    //trem3->terminate();
     trem4->terminate();
-    trem5->terminate();
+    //trem5->terminate();
 }
 
 void MainWindow::on_sliderT1_valueChanged(int value)
