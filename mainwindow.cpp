@@ -102,9 +102,9 @@ void MainWindow::on_pushButton_clicked()
 {
     trem1->start();
     trem2->start();
-    //trem3->start();
+    trem3->start();
     trem4->start();
-    //trem5->start();
+    trem5->start();
 }
 
 /*
@@ -114,9 +114,9 @@ void MainWindow::on_pushButton_2_clicked()
 {
     trem1->terminate();
     trem2->terminate();
-    //trem3->terminate();
+    trem3->terminate();
     trem4->terminate();
-    //trem5->terminate();
+    trem5->terminate();
 }
 
 void MainWindow::on_sliderT1_valueChanged(int value)

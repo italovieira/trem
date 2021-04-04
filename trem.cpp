@@ -99,6 +99,14 @@ void Trem::test(int i){
                     sem_post(&this->sem);
                 }
             }
+            //colisao Trem2 com Trem3
+            else if(this->x <= this->xEnd - (STEP*2) && this->x >= this->xEnd - (STEP*4) && this->y == this->yStart){
+                if(trens[2]->x >= trens[2]->xStart && trens[2]->x <= trens[2]->xStart + (STEP*2)){
+                    sem_wait(&this->sem);
+                    while(trens[2]->x == trens[2]->xStart);
+                    sem_post(&this->sem);
+                }
+            }
             //colisao Trem2 com Trem4
             else if(this->x >= this->xStart + mid  && this->x <= this->xStart + mid + (STEP*2) && this->y == this->yEnd){
                 if(trens[3]->x >= trens[3]->xStart + mid - (2*STEP) && trens[3]->x <= trens[3]->xEnd){
@@ -110,6 +118,23 @@ void Trem::test(int i){
 
             break;
         case 3:
+
+            //colisao Trem3 com Trem2
+            if(this->x >= this->xStart + (STEP*2) && this->x <= this->xStart + (STEP*4) && this->y == this->yEnd){
+                if(trens[1]->x <= trens[1]->xEnd && trens[1]->x > trens[1]->xEnd - (STEP*2)){
+                    sem_wait(&this->sem);
+                    while(trens[1]->x == trens[1]->xEnd);
+                    sem_post(&this->sem);
+                }
+            }
+            //colisao Trem3 com Trem5
+            else if(this->x >= this->xStart + mid  && this->x <= this->xStart + mid + (STEP*2) && this->y == this->yEnd){
+                if(trens[4]->x >= trens[4]->xStart + mid - (2*STEP) && trens[4]->x <= trens[4]->xEnd){
+                    sem_wait(&this->sem);
+                    while(trens[4]->y == trens[4]->yStart);
+                    sem_post(&this->sem);
+                }
+            }
 
             break;
         case 4:
@@ -130,8 +155,41 @@ void Trem::test(int i){
                     sem_post(&this->sem);
                 }
             }
+            //colisao Trem4 com Trem5
+            else if(this->x <= this->xEnd - (STEP*2) && this->x >= this->xEnd - (STEP*4) && this->y == this->yStart){
+                if(trens[4]->x >= trens[4]->xStart && trens[4]->x <= trens[4]->xStart + (STEP*2)){
+                    sem_wait(&this->sem);
+                    while(trens[4]->x == trens[4]->xStart);
+                    sem_post(&this->sem);
+                }
+            }
             break;
         case 5:
+
+            //colisao Trem5 com Trem2
+            if(this->y >= this->yStart + (STEP*2) && this->y <= this->yStart + (STEP*4) && this->x == this->xStart){
+                if(trens[1]->y <= trens[1]->yEnd && trens[1]->y >= trens[1]->yEnd - (STEP*2)){ //trem4 trilho da esquerda e de cima
+                    sem_wait(&this->sem);
+                    while(trens[1]->x > trens[1]->xStart + mid - (STEP*3));
+                    sem_post(&this->sem);
+                }
+            }
+            //colisao Trem5 com Trem3
+            else if(this->x >= this->xStart + mid - (STEP*3) && this->x <= this->xStart + mid && this->y == this->yStart){ // trem2 trilho de baixo
+                if(trens[2]->x >= trens[2]->xStart + (2 * STEP) && trens[2]->x <= trens[2]->xStart + mid + (2 * STEP)){
+                    sem_wait(&this->sem);
+                    while(trens[2]->y == trens[2]->yEnd);
+                    sem_post(&this->sem);
+                }
+            }
+            //colisao Trem5 com Trem4
+            else if(this->x >= this->xStart + (STEP*2) && this->x <= this->xStart + (STEP*4) && this->y == this->yEnd){
+                if(trens[3]->x <= trens[3]->xEnd && trens[3]->x > trens[3]->xEnd - (STEP*2)){
+                    sem_wait(&this->sem);
+                    while(trens[3]->x == trens[3]->xEnd);
+                    sem_post(&this->sem);
+                }
+            }
 
             break;
         default:
