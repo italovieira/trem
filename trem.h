@@ -27,6 +27,7 @@ public:
     int yStart;
     int xEnd;
     int yEnd;
+    int xMiddle;
 
 
 //Cria um sinal
