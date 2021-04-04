@@ -8,11 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1, 60, 30);
-    trem2 = new Trem(2, 320, 30);
-    trem3 = new Trem(3, 580, 30);
-    trem4 = new Trem(4, 180, 130);
-    trem5 = new Trem(5, 440, 130);
+    trem1 = new Trem(1, ui->label_trem1->x(), ui->label_trem1->y());
+    trem2 = new Trem(2, ui->label_trem2->x(), ui->label_trem2->y());
+    trem3 = new Trem(3, ui->label_trem3->x(), ui->label_trem3->y());
+    trem4 = new Trem(4, ui->label_trem4->x(), ui->label_trem4->y());
+    trem5 = new Trem(5, ui->label_trem5->x(), ui->label_trem5->y());
 
     trem1->trens[0] = trem1;
     trem1->trens[1] = trem2;
