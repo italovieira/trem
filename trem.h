@@ -2,7 +2,7 @@
 #define TREM_H
 
 #include <QThread>
-#include <semaphore.h>
+#include <QMutex>
 
 /*
  * Classe Trem herda QThread
@@ -14,16 +14,14 @@
 class Trem: public QThread{
  Q_OBJECT
 public:
+    static QMutex mutex[];
 
     Trem(int, int, int);          //construtor
     void run();                 //função a ser executada pela thread
     void setVelocidade(int);    //altera a velocidade do trem
-    void test(int i);
     void findRails();
-
-    sem_t sem;
-
-    Trem * trens[5];
+    void test(int i);
+    void move();
 
     int xStart;
     int yStart;

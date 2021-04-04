@@ -14,40 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
     trem4 = new Trem(4, ui->label_trem4->x(), ui->label_trem4->y());
     trem5 = new Trem(5, ui->label_trem5->x(), ui->label_trem5->y());
 
-    trem1->trens[0] = trem1;
-    trem1->trens[1] = trem2;
-    trem1->trens[2] = trem3;
-    trem1->trens[3] = trem4;
-    trem1->trens[4] = trem5;
-
-
-    trem2->trens[0] = trem1;
-    trem2->trens[1] = trem2;
-    trem2->trens[2] = trem3;
-    trem2->trens[3] = trem4;
-    trem2->trens[4] = trem5;
-
-
-    trem3->trens[0] = trem1;
-    trem3->trens[1] = trem2;
-    trem3->trens[2] = trem3;
-    trem3->trens[3] = trem4;
-    trem3->trens[4] = trem5;
-
-
-    trem4->trens[0] = trem1;
-    trem4->trens[1] = trem2;
-    trem4->trens[2] = trem3;
-    trem4->trens[3] = trem4;
-    trem4->trens[4] = trem5;
-
-
-    trem5->trens[0] = trem1;
-    trem5->trens[1] = trem2;
-    trem5->trens[2] = trem3;
-    trem5->trens[3] = trem4;
-    trem5->trens[4] = trem5;
-
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
