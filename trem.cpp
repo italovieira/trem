@@ -172,7 +172,7 @@ void Trem::findRails()
     int row = this->ID / 4;
 
     if (row == 1) {
-        x = 180;
+        x = 190;
     }
 
     int xStart = x + WIDTH * column;
@@ -184,7 +184,7 @@ void Trem::findRails()
     this->yStart = yStart;
     this->xEnd = xEnd;
     this->yEnd = yEnd;
-    this->xMiddle = xStart + (WIDTH - TRAIN_WIDTH) / 2;
+    this->xMiddle = xStart + (WIDTH) / 2;
 }
 
 
