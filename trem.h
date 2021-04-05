@@ -18,6 +18,7 @@ public:
     static QMutex mutex[];
     static QSemaphore sem1;
     static QSemaphore sem2;
+    static QSemaphore sem3;
 
     Trem(int, int, int);          //construtor
     void run();                 //função a ser executada pela thread

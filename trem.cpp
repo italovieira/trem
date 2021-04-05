@@ -13,6 +13,7 @@
 QMutex Trem::mutex[7];
 QSemaphore Trem::sem1(2);
 QSemaphore Trem::sem2(2);
+QSemaphore Trem::sem3(2);
 
 //Construtor
 Trem::Trem(int ID, int x, int y)
@@ -93,23 +94,25 @@ void Trem::test(int i)
 
             // Se T2 está entrando na região crítica 2
             if (this->x == this->xEnd - TRAIN_WIDTH && this->y == this->yStart) {
-                sem2.acquire();
+                sem3.acquire();
                 mutex[1].lock();
             }
 
             // Quando T2 sair da região crítica 2
             if (this->x == this->xEnd && this->y == this->yEnd) {
-                sem2.release();
+                sem3.release();
                 mutex[1].unlock();
             }
 
             // Se T2 está entrando na região crítica 5
             if (this->x == this->xEnd && this->y == this->yEnd - TRAIN_WIDTH) {
+                sem2.acquire();
                 mutex[4].lock();
             }
 
             // Quando T2 sair da região crítica 5
             if (this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yEnd) {
+                sem2.release();
                 mutex[4].unlock();
             }
 
@@ -140,13 +143,13 @@ void Trem::test(int i)
 
             // Se T3 está entrando na região crítica 6
             if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yEnd) {
-                sem2.acquire();
+                sem3.acquire();
                 mutex[5].lock();
             }
 
             // Quando T3 sair da região crítica 6
             if (this->x == this->xStart && this->y == this->yEnd - TRAIN_WIDTH) {
-                sem2.release();
+                sem3.release();
                 mutex[5].unlock();
             }
 
@@ -177,11 +180,13 @@ void Trem::test(int i)
 
             // Se T4 está entrando na região crítica 4
             if (this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yStart) {
+                sem2.acquire();
                 mutex[3].lock();
             }
 
             // Quando T4 sair da região crítica 4
             if (this->x == this->xEnd && this->y == this->yStart + TRAIN_WIDTH) {
+                sem2.release();
                 mutex[3].unlock();
             }
 
@@ -201,12 +206,14 @@ void Trem::test(int i)
             // Se T5 está entrando na região crítica 5
             if (this->x == this->xStart && this->y == this->yStart + TRAIN_WIDTH) {
                 sem2.acquire();
+                sem3.acquire();
                 mutex[4].lock();
             }
 
             // Quando T5 sair da região crítica 5
             if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart) {
                 sem2.release();
+                sem3.release();
                 mutex[4].unlock();
             }
 
