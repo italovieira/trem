@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include <QMutex>
+#include <QSemaphore>
 
 /*
  * Classe Trem herda QThread
@@ -15,6 +16,8 @@ class Trem: public QThread{
  Q_OBJECT
 public:
     static QMutex mutex[];
+    static QSemaphore sem1;
+    static QSemaphore sem2;
 
     Trem(int, int, int);          //construtor
     void run();                 //função a ser executada pela thread

@@ -11,6 +11,8 @@
 #define TRAIN_WIDTH 20
 
 QMutex Trem::mutex[7];
+QSemaphore Trem::sem1(2);
+QSemaphore Trem::sem2(2);
 
 //Construtor
 Trem::Trem(int ID, int x, int y)
@@ -57,10 +59,13 @@ void Trem::test(int i)
         case 1:
             // Se T1 está entrando na região crítica 1
             if (this->x == this->xEnd - TRAIN_WIDTH && this->y == this->yStart) {
+                sem1.acquire();
                 mutex[0].lock();
             }
+
             // Quandoo T1 sair da região crítica 1
             if (this->x == this->xEnd && this->y == this->yEnd) {
+                sem1.release();
                 mutex[0].unlock();
             }
 
@@ -106,10 +111,12 @@ void Trem::test(int i)
 
             // Se T2 está entrando na região crítica 4
             if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yEnd) {
+                sem1.acquire();
                 mutex[3].lock();
             }
             // Quando T2 sair da região crítica 4
             if (this->x == this->xStart && this->y == this->yEnd - TRAIN_WIDTH) {
+                sem1.release();
                 mutex[3].unlock();
             }
 
@@ -140,10 +147,12 @@ void Trem::test(int i)
 
             // Se T4 está entrando na região crítica 3
             if (this->x == this->xStart && this->y == this->yStart + TRAIN_WIDTH) {
+                sem1.acquire();
                 mutex[2].lock();
             }
             // Quando T4 sair da região crítica 3
             if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart) {
+                sem1.release();
                 mutex[2].unlock();
             }
 
