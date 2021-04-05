@@ -10,10 +10,9 @@
 #define HEIGHT 100
 #define TRAIN_WIDTH 20
 
-//Construtor
-
 QMutex Trem::mutex[7];
 
+//Construtor
 Trem::Trem(int ID, int x, int y)
 {
     this->ID = ID;
@@ -59,20 +58,18 @@ void Trem::test(int i)
             // Se T1 está entrando na região crítica 1
             if (this->x == this->xEnd - TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[0].lock();
-                // Enquanto T1 não sair da região crítica 1
-                while (!(this->x == this->xEnd && this->y == this->yEnd)) {
-                    this->move();
-                }
+            }
+            // Quandoo T1 sair da região crítica 1
+            if (this->x == this->xEnd && this->y == this->yEnd) {
                 mutex[0].unlock();
             }
 
             // Se T1 está entrando na região crítica 3
             if (this->x == this->xEnd && this->y == this->yEnd - TRAIN_WIDTH) {
                 mutex[2].lock();
-                // Enquanto T1 não sair da região crítica 3
-                while (!(this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yEnd)) {
-                    this->move();
-                }
+            }
+            // Quando T1 sair da região crítica 3
+            if (this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yEnd) {
                 mutex[2].unlock();
             }
 
@@ -82,40 +79,37 @@ void Trem::test(int i)
             // Se T2 está entrando na região crítica 1
             if (this->x == this->xStart + TRAIN_WIDTH && this->y == this->yEnd) {
                 mutex[0].lock();
-                // Enquanto T2 não sair da região crítica 1
-                while (!(this->x == this->xStart && this->y == this->yStart)) {
-                    this->move();
-                }
+            }
+            // Quando T2 sair da região crítica 1
+            if (this->x == this->xStart && this->y == this->yStart) {
                 mutex[0].unlock();
             }
 
             // Se T2 está entrando na região crítica 2
             if (this->x == this->xEnd - TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[1].lock();
-                // Enquanto T1 não sair da região crítica 1
-                while (!(this->x == this->xEnd && this->y == this->yEnd)) {
-                    this->move();
-                }
+            }
+
+            // Quando T2 sair da região crítica 2
+            if (this->x == this->xEnd && this->y == this->yEnd) {
                 mutex[1].unlock();
             }
 
             // Se T2 está entrando na região crítica 5
             if (this->x == this->xEnd && this->y == this->yEnd - TRAIN_WIDTH) {
                 mutex[4].lock();
-                // Enquanto T2 não sair da região crítica 5
-                while (!(this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yEnd)) {
-                    this->move();
-                }
+            }
+            // Quando T2 sair da região crítica 5
+            if (this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yEnd) {
                 mutex[4].unlock();
             }
 
             // Se T2 está entrando na região crítica 4
             if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yEnd) {
                 mutex[3].lock();
-                // Enquanto T2 não sair da região crítica 4
-                while (!(this->x == this->xStart && this->y == this->yEnd - TRAIN_WIDTH)) {
-                    this->move();
-                }
+            }
+            // Quando T2 sair da região crítica 4
+            if (this->x == this->xStart && this->y == this->yEnd - TRAIN_WIDTH) {
                 mutex[3].unlock();
             }
 
@@ -126,10 +120,9 @@ void Trem::test(int i)
             // Se T3 está entrando na região crítica 2
             if (this->x == this->xStart + TRAIN_WIDTH && this->y == this->yEnd) {
                 mutex[1].lock();
-                // Enquanto T2 não sair da região crítica 1
-                while (!(this->x == this->xStart && this->y == this->yStart)) {
-                    this->move();
-                }
+            }
+            // Quando T3 sair da região crítica 2
+            if (this->x == this->xStart && this->y == this->yStart) {
                 mutex[1].unlock();
             }
 
@@ -139,30 +132,27 @@ void Trem::test(int i)
             // Se T4 está entrando na região crítica 7
             if (this->x == this->xEnd - TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[6].lock();
-                // Enquanto T1 não sair da região crítica 1
-                while (!(this->x == this->xEnd && this->y == this->yEnd)) {
-                    this->move();
-                }
+            }
+            // Quando T4 sair da região crítica 7
+            if (this->x == this->xEnd && this->y == this->yEnd) {
                 mutex[6].unlock();
             }
 
             // Se T4 está entrando na região crítica 3
             if (this->x == this->xStart && this->y == this->yStart + TRAIN_WIDTH) {
                 mutex[2].lock();
-                // Enquanto T4 não sair da região crítica 3
-                while (!(this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart)) {
-                    this->move();
-                }
+            }
+            // Quando T4 sair da região crítica 3
+            if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[2].unlock();
             }
 
             // Se T4 está entrando na região crítica 4
             if (this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[3].lock();
-                // Enquanto T4 não sair da região crítica 4
-                while (!(this->x == this->xEnd && this->y == this->yStart + TRAIN_WIDTH)) {
-                    this->move();
-                }
+            }
+            // Quando T4 sair da região crítica 4
+            if (this->x == this->xEnd && this->y == this->yStart + TRAIN_WIDTH) {
                 mutex[3].unlock();
             }
 
@@ -172,20 +162,18 @@ void Trem::test(int i)
             // Se T5 está entrando na região crítica 7
             if (this->x == this->xStart + TRAIN_WIDTH && this->y == this->yEnd) {
                 mutex[6].lock();
-                // Enquanto T2 não sair da região crítica 1
-                while (!(this->x == this->xStart && this->y == this->yStart)) {
-                    this->move();
-                }
+            }
+            // Quando T5 sair da região crítica 7
+            if (this->x == this->xStart && this->y == this->yStart) {
                 mutex[6].unlock();
             }
 
             // Se T5 está entrando na região crítica 5
             if (this->x == this->xStart && this->y == this->yStart + TRAIN_WIDTH) {
                 mutex[4].lock();
-                // Enquanto T5 não sair da região crítica 5
-                while (!(this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart)) {
-                    this->move();
-                }
+            }
+            // Quando T5 sair da região crítica 5
+            if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[4].unlock();
             }
 
