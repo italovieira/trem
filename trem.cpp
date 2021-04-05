@@ -133,6 +133,17 @@ void Trem::test(int i)
                 mutex[1].unlock();
             }
 
+            // Se T3 está entrando na região crítica 6
+            if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yEnd) {
+                mutex[5].lock();
+            }
+
+            // Quando T3 sair da região crítica 6
+            if (this->x == this->xStart && this->y == this->yEnd - TRAIN_WIDTH) {
+                mutex[5].unlock();
+            }
+
+
             break;
 
         case 4:
@@ -184,6 +195,16 @@ void Trem::test(int i)
             // Quando T5 sair da região crítica 5
             if (this->x == this->xMiddle + TRAIN_WIDTH && this->y == this->yStart) {
                 mutex[4].unlock();
+            }
+
+            // Se T5 está entrando na região crítica 6
+            if (this->x == this->xMiddle - TRAIN_WIDTH && this->y == this->yStart) {
+                mutex[5].lock();
+            }
+
+            // Quando T5 sair da região crítica 6
+            if (this->x == this->xEnd && this->y == this->yStart + TRAIN_WIDTH) {
+                mutex[5].unlock();
             }
 
             break;
