@@ -26,7 +26,7 @@ public:
     void run();                 //função a ser executada pela thread
     void setVelocidade(int);    //altera a velocidade do trem
     void findRails();
-    void test(int i);
+    void test();
     void move();
 
     int xStart;
