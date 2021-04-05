@@ -20,6 +20,7 @@ public:
     static QSemaphore sem2;
     static QSemaphore sem3;
     static QSemaphore sem4;
+    static QSemaphore sem5;
 
     Trem(int, int, int);          //construtor
     void run();                 //função a ser executada pela thread
